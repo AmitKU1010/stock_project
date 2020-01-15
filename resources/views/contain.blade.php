@@ -1,5 +1,5 @@
 <!-- Right sidebar Ends-->
-        <div class="page-body">
+         <div class="page-body">
           <!-- breadcrumb  Start -->
           <div class="container-fluid">
             <div class="page-header">
