@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-<!-- Mirrored from laravel.pixelstrap.com/endless/authentication/login-video by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Dec 2019 11:24:45 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +10,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="./assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
-    <title>Login | Endless Admin Panel</title>
+    <title>Login | Stock Market</title>
     <!-- Google font-->
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -53,7 +51,7 @@
             <source src="./assets/video/auth-bg.mp4" type="video/mp4">
           </video>
           <div class="authentication-box">
-            <div class="text-center"><img src="./assets/images/endless-logo.png" alt=""></div>
+            <div class="text-center"><!-- <img src="./assets/images/endless-logo.png" alt=""> --><h1 style="color: blue;">Stock Market</h1></div>
             <div class="card mt-4">
               <div class="card-body">
                 <div class="text-center">
@@ -126,5 +124,4 @@
 <script src="./assets/js/script.js"></script>
 <!-- Plugin used-->  </body>
 
-<!-- Mirrored from laravel.pixelstrap.com/endless/authentication/login-video by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Dec 2019 11:24:46 GMT -->
 </html>
