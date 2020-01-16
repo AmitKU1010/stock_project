@@ -17,11 +17,9 @@
  
       <li><a class="sidebar-header " href="{{route('home')}}"><i data-feather="menu"></i><span>DASHBOARD</span></a></li>
       
-      <li><a class="sidebar-header" href="{{route('user')}}" class="" ><i data-feather="settings"></i><span> ADD USER</span></a></li>
+      <li><a class="sidebar-header" href="{{url('/')}}/user" class="" ><i data-feather="settings"></i><span> ADD USER</span></a></li>
 
-      <li><a class="sidebar-header" href="{{route('user')}}" class="" ><i data-feather="settings"></i><span> VIEW USER DETAILS</span></a></li>
-
-      
+       <li><a class="sidebar-header" href="{{url('/')}}/userview" class="" ><i data-feather="settings"></i><span>LIST USERS</span></a></li>
 
     </ul>
   </div>

@@ -29,6 +29,13 @@
 <link rel="stylesheet" type="text/css" href="assets/css/flag-icon.css">
 <!-- Feather icon-->
 <link rel="stylesheet" type="text/css" href="assets/css/feather-icon.css">
+
+<!-- datatable -->
+<link rel="stylesheet" type="text/css" href="assets/css/datatables.css">
+<link rel="stylesheet" type="text/css" href="assets/css/datatable-extension.css">
+<!-- datatable -->
+
+
 <link rel="stylesheet" type="text/css" href="assets/css/chartist.css">
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="assets/css/prism.css">
@@ -63,20 +70,7 @@
           </div>
           <div class="nav-right col p-0">
             <ul class="nav-menus">
-              <li>
-                <form class="form-inline search-form" action="#" method="get">
-                  <div class="form-group">
-                    <div class="Typeahead Typeahead--twitterUsers">
-                      <div class="u-posRelative">
-                        <input class="Typeahead-input form-control-plaintext" id="demo-input" type="text" name="q" placeholder="Search...">
-                        <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Loading...</span></div><span class="d-sm-none mobile-search"><i data-feather="search"></i></span>
-                      </div>
-                      <div class="Typeahead-menu"></div>
-                    </div>
-                  </div>
-                </form>
-              </li>
-              <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
+     
               <li class="onhover-dropdown"><a class="txt-dark" href="#">
                   <h6>EN</h6></a>
                 <ul class="language-dropdown onhover-show-div p-20">
