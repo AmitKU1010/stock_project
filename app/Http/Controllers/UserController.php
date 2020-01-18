@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use Hash;
-
-
+use DB;
 use Illuminate\Http\Request;
 
 
@@ -27,7 +26,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user');
+        $associates=DB::table('users')->where('role_id',2)->get();
+        return view('admin.user')->with('associates',$associates);
     }
 
       public function store(Request $request)
@@ -36,11 +36,7 @@ class UserController extends Controller
         // $pass=Hash::make($request->input('password'));
         // $All_request=new User($All_request);
         // $All_request->save();
-
-
-
-        $User=new User();
-
+           $User=new User();
            $User->name=$request->input('name'); 
            $User->email=$request->input('email');       
            $User->password=Hash::make($request->input('password'));       
@@ -61,20 +57,71 @@ class UserController extends Controller
            $User->ifcs_code =$request->input('ifcs_code');      
            $User->joining_fee =$request->input('joining_fee');      
            $User->investment  =$request->input('investment');   
-           $User->pancard_img =$request->input('pancard_img');      
-           $User->ad_front =$request->input('ad_front');     
-           $User->ad_back =$request->input('ad_back');    
-           $User->save();
 
-        return back()->with('success','User created successfully!');
+      //images starts
+      $realt = $request->file('profile_image');
+      $filenamet = time().'.'.$realt->getClientOriginalExtension();
+      $destinationPatht = public_path('/images/profile');
+      $realt->move($destinationPatht, $filenamet);
+      $User->profile_image=$filenamet;
+      //images ends  
+
+
+      //images starts
+      $realo = $request->file('pancard_img');
+      $filenameo = time().'.'.$realo->getClientOriginalExtension();
+      $destinationPatho = public_path('/images/pan');
+      $realo->move($destinationPatho, $filenameo);
+      $User->pancard_img=$filenameo;
+      //images ends    
+
+        //images starts
+      $realn = $request->file('ad_front');
+      $filenamen = time().'.'.$realn->getClientOriginalExtension();
+      $destinationPathn = public_path('/images/adhara_f');
+      $realn->move($destinationPathn, $filenamen);
+      $User->ad_front=$filenamen;
+      //images ends  
+
+
+        //images starts
+      $reale = $request->file('ad_back');
+      $filenamee = time().'.'.$reale->getClientOriginalExtension();
+      $destinationPathe = public_path('/images/adhara_b');
+      $reale->move($destinationPathe, $filenamee);
+      $User->ad_back=$filenamee;
+      //images ends  
+
+      $User->save();
+      return back()->with('success','User created successfully!');
 
 
     }
 
     public function view()
     {
-        $users = User::all();
+        $users = User::where('id', '!=', auth()->id())->get();
+
+        $users=DB::table('users')->join('roles','users.role_id','roles.id')
+        ->where('users.id','!=',auth()->id())->get();
         return view('admin.user_view')->with('users',$users);
+    }
+
+    public function edit_profile($id)
+    {
+       $users = User::where('user_id',$id)->get();
+
+      
+      return view('admin.profile')->with('users',$users);
+    }
+ 
+       public function destroy($id)
+    {
+           $users=DB::table('users')->where('id',$id);
+       $users->delete();
+       return redirect('/userview')->with('success','Data Deleted Succesfully');
+
+
     }
  
 }

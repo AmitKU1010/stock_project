@@ -13,6 +13,7 @@
 <!-- footer end-->      </div>
       <!-- Page Body End-->
     </div>
+    
 
      <!-- latest jquery-->
 <script src="assets/js/jquery-3.2.1.min.js"></script>
@@ -74,10 +75,21 @@
 <!--https://designreset.com/preview-equation/default/map_jhere.html-->
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
+
+<!-- selectto -->
+
+  <!-- for Select Search In drop down -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+<script type="text/javascript">
+ $(".myselect2").select2();
+  
+</script>
+<!-- selectto -->
 <script src="assets/js/script.js"></script>
 <script src="assets/js/theme-customizer/customizer.js"></script>
 <!-- Plugin used-->
     <script>window.windowvar = window.windowvar || {};windowvar.hello = 'Hello';</script>  </body>
 
-<!-- Mirrored from laravel.pixelstrap.com/endless/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Dec 2019 10:45:00 GMT -->
 </html>

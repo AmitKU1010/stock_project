@@ -17,10 +17,15 @@ Route::post('/user/store', 'UserController@store');
 
 Route::get('/userview', 'UserController@view');
 
+Route::get('/userview/destroy/{id}','UserController@destroy');
 
+Route::get('/edit_profile{id}','UserController@edit_profile');
+
+
+
+  
  
  
-
 
  
 

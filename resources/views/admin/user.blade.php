@@ -3,6 +3,7 @@
 <!-- Right sidebar Start-->
         <div class="page-body">
           <!-- breadcrumb  Start -->
+@include('links')  
           <div class="container-fluid">
             <div class="page-header">
  
@@ -14,12 +15,12 @@
     <div class="row">
     <div class="col-sm-12">
       <div class="card">
-        <div class="card-header" style="background-color: #ccdcff;">
+        <div class="card-header">
           <h5>Add User</h5>
         </div>
-        <div class="card-body">
-        	<form method="post" action="{{url('/')}}/user/store" method="post">
-                    {{csrf_field()}}
+        <div class="card-body" style="background-color: #ccdcff;">
+        	<form method="post" action="{{url('/')}}/user/store" method="post" enctype="multipart/form-data">
+                    {{csrf_field()}}   
                       @include('flash')
 
             <div class="form-row">
@@ -31,19 +32,18 @@
                 </select>
                 <div class="valid-feedback">Looks good!</div>
               </div>
-
+ 
 
                <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Sponer ID</label>
-                <select class="form-control" name="sponser_id" id="sponser_id">
-                	<option value="associate">Admin</option>
-                	<option value="client">ST1233FTYHF</option>
-                	<option value="client">ST123356TYHF</option>
-                	<option value="client">ST1233FTYHF</option>
-                	<option value="client">ST1233FTYHF</option>
-                	<option value="client">ST1233FTYHF</option>
-                	<option value="client">ST1233FTYHF</option>
-                	<option value="client">ST1233FTYHF</option>
+      
+                <select class="form-control myselect2" style="width: 330px;" name="sponser_id" id="sponser_id">
+                  <option>Select</option>
+                    @if(count($associates) > 0)
+                    @foreach($associates as $associate)
+                	<option value="client">{{$associate->user_id}}</option>
+                    @endforeach
+                    @endif
                 </select>
                 <div class="valid-feedback">Looks good!</div>
               </div>
@@ -193,6 +193,15 @@
                 </div>
                 </div>
 
+
+                 <div class="col-md-4 mb-3">
+                <label for="validationCustomUsername">Profile Image</label>
+                <div class="input-group">
+                  <input class="form-control" id="validationCustomUsername" type="file" name="profile_image" placeholder="IFCS Code" aria-describedby="inputGroupPrepend" >
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+                </div>
+
                <div class="col-md-4 mb-3">
                 <label for="validationCustomUsername">Pan Card Image</label>
                 <div class="input-group">
@@ -218,6 +227,8 @@
                 </div>
                 </div>
 
+                 
+
             </div>
 
             <br>
@@ -237,10 +248,6 @@
           </form>
         </div>
       </div>
-
-      
-      
-     
     </div>
   </div>
             </div>
