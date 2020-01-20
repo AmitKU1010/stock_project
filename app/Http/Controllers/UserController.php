@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\User;
 use Hash;
 use DB;
@@ -117,9 +118,9 @@ class UserController extends Controller
  
        public function destroy($id)
     {
-           $users=DB::table('users')->where('id',$id);
+           $users=DB::table('users')->where('user_id',$id);
        $users->delete();
-       return redirect('/userview')->with('success','Data Deleted Succesfully');
+        return back()->with('success','Department created successfully!');
 
 
     }

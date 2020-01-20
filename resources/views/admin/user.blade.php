@@ -19,7 +19,7 @@
           <h5>Add User</h5>
         </div>
         <div class="card-body" style="background-color: #ccdcff;">
-        	<form method="post" action="{{url('/')}}/user/store" method="post" enctype="multipart/form-data">
+        	<form method="post" action="{{url('/')}}/admin/user/store" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}   
                       @include('flash')
 

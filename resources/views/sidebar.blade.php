@@ -7,7 +7,7 @@
   </div>
   <div class="sidebar custom-scrollbar">
     <div class="sidebar-user text-center">
-      <div><img class="img-60 rounded-circle" src="assets/images/user/1.jpg" alt="#">
+      <div><img class="img-60 rounded-circle" src="{{ asset('assets/images/user/1.jpg') }}" alt="#">
         <div class="profile-edit"><a href="{{url('/')}}/edit_profile" target="_blank"><i data-feather="edit"></i></a></div>
       </div>
       <h6 class="mt-3 f-14">{{ Auth::user()->name }} </h6>
@@ -23,10 +23,10 @@
          if($auth_id=='1')
          {
       @endphp
-      
-      <li><a class="sidebar-header" href="{{url('/')}}/user" class="" ><i data-feather="settings"></i><span> ADD USER</span></a></li>
+       
+      <li><a class="sidebar-header" href="{{url('/')}}/admin/user" class="" ><i data-feather="settings"></i><span> ADD USER</span></a></li>
 
-       <li><a class="sidebar-header" href="{{url('/')}}/userview" class="" ><i data-feather="settings"></i><span>LIST USERS</span></a></li>
+       <li><a class="sidebar-header" href="{{url('/')}}/admin/userview" class="" ><i data-feather="settings"></i><span>LIST USERS</span></a></li>
 
        @php
        }

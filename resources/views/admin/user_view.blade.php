@@ -36,7 +36,7 @@
        @foreach($users as $user)
               	<tr>
               		<td>{{$i++}}</td>
-              		<td><a href="{{url('/')}}/edit_profile{{ $user->user_id}}">{{$user->user_id}}</a></td>
+              		<td><a href="{{url('/')}}/admin/edit_profile/{{ $user->user_id}}">{{$user->user_id}}</a></td>
                   <td>{{$user->name}}</td>
               		<td>{{$user->sponser_id }}</td>
               		<td>{{$user->email}}</td>
@@ -49,7 +49,7 @@
                                                                         
                                   </a>
 
-                                  <a href="{{ url('/')}}/userview/destroy/{{ $user->id}} " class="btn btn-danger btn-xs" style="border-radius: 8px;" title="DELETE" onclick="return confirm('Are you sure you want to delete this user?');">
+                                  <a href="{{ url('/')}}/admin/userview/destroy/{{ $user->user_id}} " class="btn btn-danger btn-xs" style="border-radius: 8px;" title="DELETE" onclick="return confirm('Are you sure you want to delete this user?');">
                                     <i class="fa fa-trash-o mr-1"></i>
                                   </a>                                  
                                 </td>

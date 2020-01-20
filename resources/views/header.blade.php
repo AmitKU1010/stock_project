@@ -11,8 +11,8 @@
     <meta name="description" content="endless admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, endless admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
     <meta name="csrf-token" content="Rn3LU6z7wlxz2exmGuZJqjy2kvBPIRvE7fKfD2k7">
     <title>{{ config('app.name') }} </title>
     <!-- Google font-->
@@ -20,33 +20,36 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <!-- Font Awesome-->
-<link rel="stylesheet" type="text/css" href="assets/css/fontawesome.css">
+
+
+
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/fontawesome.css') }}">
 <!-- ico-font-->
-<link rel="stylesheet" type="text/css" href="assets/css/icofont.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/icofont.css') }}">
 <!-- Themify icon-->
-<link rel="stylesheet" type="text/css" href="assets/css/themify.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themify.css') }}">
 <!-- Flag icon-->
-<link rel="stylesheet" type="text/css" href="assets/css/flag-icon.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/flag-icon.css') }}">
 <!-- Feather icon-->
-<link rel="stylesheet" type="text/css" href="assets/css/feather-icon.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/feather-icon.css') }}">
 
 <!-- datatable -->
-<link rel="stylesheet" type="text/css" href="assets/css/datatables.css">
-<link rel="stylesheet" type="text/css" href="assets/css/datatable-extension.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatable-extension.css') }}">
 <!-- datatable -->
 
 
-<link rel="stylesheet" type="text/css" href="assets/css/chartist.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chartist.css') }}">
 <!-- Plugins css start-->
-<link rel="stylesheet" type="text/css" href="assets/css/prism.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/prism.css') }}">
 <!-- Plugins css Ends-->
 <!-- Bootstrap css-->
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
 <!-- App css-->
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-<link rel="stylesheet" type="text/css" id="color" href="assets/css/light-1.css" media="screen">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+<link rel="stylesheet" type="text/css" id="color" href="{{ asset('assets/css/light-1.css') }}" media="screen">
 <!-- Responsive css-->
-<link rel="stylesheet" type="text/css" href="assets/css/responsive.css">  </head>
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">  </head>
   <body main-theme-layout="main-theme-layout-1">
     <!-- Loader starts-->
     <!-- <div class="loader-wrapper">
@@ -61,7 +64,7 @@
       <div class="page-main-header">
         <div class="main-header-right row">
           <div class="main-header-left d-lg-none">
-            <div class="logo-wrapper"><a href="http://laravel.pixelstrap.com/endless"><img src="assets/images/endless-logo.png" alt=""></a></div>
+            <div class="logo-wrapper"><a href="http://laravel.pixelstrap.com/endless"><img src="{{ asset('assets/images/endless-logo.png') }}" alt=""></a></div>
           </div>
           <div class="mobile-sidebar">
             <div class="media-body text-right switch-sm">
@@ -104,7 +107,7 @@
               </li>
           
               <li class="onhover-dropdown">
-                <div class="media align-items-center"><img class="align-self-center pull-right img-50 rounded-circle" src="assets/images/dashboard/user.png" alt="header-user">
+                <div class="media align-items-center"><img class="align-self-center pull-right img-50 rounded-circle" src="{{ asset('assets/images/dashboard/user.png') }}" alt="header-user">
                   <div class="dotted-animation"><span class="animate-circle"></span><span class="main-circle"></span></div>
                 </div>
                 <ul class="profile-dropdown onhover-show-div p-20">

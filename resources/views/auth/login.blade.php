@@ -57,22 +57,22 @@
                 <div class="text-center">
                   <h4>LOGIN</h4>
                   <h6>Enter your Username and Password </h6>
-                </div>
+                </div>    
                 <form class="theme-form" method="POST" action="{{ route('login') }}">
                         @csrf
 
                  <div class="form-group">
                  <label class="pt-0"><b> Role Type</b></label>
-                 <select class="form-control">
-                 <option>OFFICE</option>
-                 <option>ASSOCIATE</option>
-                 <option>CLIENT</option>
+                 <select class="form-control" name="role_type">
+                 <option value="1">OFFICE</option>
+                 <option value="2">ASSOCIATE</option>
+                 <option value="3">CLIENT</option>
                  </select>
                   </div>
 
                   <div class="form-group">
                     <label class="pt-0"><b> User Name</b></label>
-                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                    <input id="email" type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">

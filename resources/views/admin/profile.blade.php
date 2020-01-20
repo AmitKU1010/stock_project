@@ -5,13 +5,14 @@
 <br>
  @if(count($users) > 0)
        @foreach($users as $user)
-<div class="page-body">
+<div class="page-body" style="font-style:bold;">
 <div class="container emp-profile">
             <form method="post">
                 <div class="row">
                     <div class="col-md-4" >
                         <div class="profile-img" >
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                              <img width="70%" class="img-circle" src="{{ URL::asset('/images/adhara_b/'.$user->pancard_img) }}">
+                            
                            <!--  <div class="file btn btn-lg btn-primary">
                                 Change Photo
                                 <input type="file" name="file"/>
