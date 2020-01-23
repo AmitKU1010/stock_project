@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\User;
+use App\Commission;
 use Hash;
 use DB;
 use Illuminate\Http\Request;
-
+  
 
 class UserController extends Controller
 {
@@ -15,6 +14,7 @@ class UserController extends Controller
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -30,16 +30,23 @@ class UserController extends Controller
         $associates=DB::table('users')->where('role_id',2)->get();
         return view('admin.user')->with('associates',$associates);
     }
-
+  
       public function store(Request $request)
     {
-        // $All_request=$request->all();
-        // $pass=Hash::make($request->input('password'));
-        // $All_request=new User($All_request);
-        // $All_request->save();
+     $request->validate([
+    'name' => 'required',
+    'email' => 'required|unique:users',
+    'name' => 'required',
+    'profile_image' => 'required',
+    'pancard_img' => 'required',
+    'ad_front' => 'required',
+    'ad_back' => 'required',
+      ]); 
+
            $User=new User();
            $User->name=$request->input('name'); 
-           $User->email=$request->input('email');       
+           $User->email=$request->input('email');  
+           $User->joining_date=$request->input('joining_date');       
            $User->password=Hash::make($request->input('password'));       
            $User->role_id=$request->input('memeber_type');       
            $User->sponser_id=$request->input('sponser_id');       
@@ -74,9 +81,9 @@ class UserController extends Controller
       $destinationPatho = public_path('/images/pan');
       $realo->move($destinationPatho, $filenameo);
       $User->pancard_img=$filenameo;
-      //images ends    
+      //images ends     
 
-        //images starts
+      //images starts
       $realn = $request->file('ad_front');
       $filenamen = time().'.'.$realn->getClientOriginalExtension();
       $destinationPathn = public_path('/images/adhara_f');
@@ -84,14 +91,48 @@ class UserController extends Controller
       $User->ad_front=$filenamen;
       //images ends  
 
-
-        //images starts
+      
+      //images starts
       $reale = $request->file('ad_back');
       $filenamee = time().'.'.$reale->getClientOriginalExtension();
       $destinationPathe = public_path('/images/adhara_b');
       $reale->move($destinationPathe, $filenamee);
       $User->ad_back=$filenamee;
       //images ends  
+
+
+
+
+       $timestamp = strtotime($User->joining_date);
+
+       $day = date('d', $timestamp);
+
+       $joining_fee_am=$request->input('joining_fee');
+
+       if ($day >= 1 && $day <=10)
+       {
+          $incetive=($joining_fee_am*4/100);
+       }
+
+        if ($day >= 10 && $day <=15)
+       {
+          $incetive=($joining_fee_am*2/100);
+       }
+
+        if ($day >= 15 && $day <=20)
+       {
+          $incetive=($joining_fee_am*1/100);
+       }
+
+        if ($day >= 20 && $day <=31)
+       {
+        $incetive=0;
+       }
+
+
+
+
+       dd($day);
 
       $User->save();
       return back()->with('success','User created successfully!');
@@ -102,7 +143,6 @@ class UserController extends Controller
     public function view()
     {
         $users = User::where('id', '!=', auth()->id())->get();
-
         $users=DB::table('users')->join('roles','users.role_id','roles.id')
         ->where('users.id','!=',auth()->id())->get();
         return view('admin.user_view')->with('users',$users);
@@ -110,19 +150,15 @@ class UserController extends Controller
 
     public function edit_profile($id)
     {
-       $users = User::where('user_id',$id)->get();
-
-      
+      $users = User::where('user_id',$id)->get();
       return view('admin.profile')->with('users',$users);
     }
  
        public function destroy($id)
     {
-           $users=DB::table('users')->where('user_id',$id);
-       $users->delete();
+        $users=DB::table('users')->where('user_id',$id);
+        $users->delete();
         return back()->with('success','Department created successfully!');
-
-
     }
  
 }

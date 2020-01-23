@@ -13,6 +13,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// for Admin
+
 Route::group(['as' => 'admin.',['middleware' =>'auth', 'admin'], 'prefix' => 'admin'], function () 
 {
 
@@ -31,6 +33,34 @@ Route::get('/userview/destroy/{id}','UserController@destroy');
 Route::get('/edit_profile/{id}','UserController@edit_profile');
 
 });
+
+// for Admin
+
+
+Route::group(['as' => 'associate.', 'prefix' => 'associate'], function () 
+{
+
+Route::get("/dashboard", function()
+{
+   return View::make("associate.dashboard");
+});
+
+});
+
+// for Associate
+
+
+Route::group(['as' => 'client.', 'prefix' => 'client'], function () 
+{
+
+Route::get("/dashboard", function()
+{
+   return View::make("client.dashboard");
+});
+
+});
+// for Associate
+
 
 
   

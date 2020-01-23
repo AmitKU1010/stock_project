@@ -43,10 +43,13 @@ class LoginController extends Controller
         {
             $this->redirectTo = '/admin/dashboard';
         }
-        else
+           if ($user->role_id == '2')
         {
-            $this->redirectTo = '/home';
-
+            $this->redirectTo = '/associate/dashboard';
+        }
+           if ($user->role_id == '3')
+        {
+            $this->redirectTo = '/client/dashboard';
         }
 
     }

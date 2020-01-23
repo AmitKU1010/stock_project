@@ -30,8 +30,7 @@
                 	<option value="2">Associate</option>
                 	<option value="3">Client</option>
                 </select>
-                <div class="valid-feedback">Looks good!</div>
-              </div>
+                              </div>
  
 
                <div class="col-md-4 mb-3">
@@ -45,26 +44,32 @@
                     @endforeach
                     @endif
                 </select>
-                <div class="valid-feedback">Looks good!</div>
-              </div>
+                              </div>
 
                <div class="col-md-4 mb-3">
                 <label for="validationCustom02">User ID</label>
                 <input class="form-control" id="user_id" type="text" placeholder="User ID" name="user_id" >
-                <div class="valid-feedback">Looks good!</div>
-              </div>
+                <span class="text-danger">{{ $errors->first('user_id') }}</span>
+
+                              </div>
 
                <div class="col-md-4 mb-3">
                 <label for="validationCustom02">password</label>
                 <input class="form-control" id="password" type="text" placeholder="password" name="password" >
-                <div class="valid-feedback">Looks good!</div>
+                <span class="text-danger">{{ $errors->first('user_id') }}</span>
+
+                              </div>
+
+              <div class="col-md-4 mb-3">
+                <label >Joining Date</label>
+                <input class="form-control" id="joining_date" name="joining_date" type="date">
               </div>
 
 
               <div class="col-md-4 mb-3">
-                <label for="validationCustom02">Full Name</label>
+                <label >Full Name</label>
                 <input class="form-control" id="name" name="name" type="text" placeholder="Full name" >
-                <div class="valid-feedback">Looks good!</div>
+                <span class="text-danger">{{ $errors->first('name') }}</span>
               </div>
 
 
@@ -74,16 +79,17 @@
                 	<option value="male">Male</option>
                 	<option value="female">Female</option>
                 </select>
-                <div class="valid-feedback">Looks good!</div>
-              </div>
+                              </div>
 
               <div class="col-md-4 mb-3">
                 <label for="validationCustomUsername">Email</label>
                 <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend">@</span></div>
                   <input class="form-control" id="validationCustomUsername" name="email" type="text" placeholder="Email" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+                  
                 </div>
+                <span class="text-danger">{{ $errors->first('email') }}</span>
+
               </div>
 
 
@@ -121,7 +127,7 @@
                 <label for="validationCustomUsername">Nominee Name</label>
                 <div class="input-group">
                   <input class="form-control" id="validationCustomUsername" type="text" name="nominee_name" placeholder="Nominee Name" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+             
                 </div>
               </div>
 
@@ -129,7 +135,7 @@
                 <label for="validationCustomUsername">Nominee Age</label>
                 <div class="input-group">
                   <input class="form-control" id="validationCustomUsername" type="number" name="nominee_age" placeholder="Nominee Age" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+             
                 </div>
               </div>
 
@@ -137,7 +143,7 @@
                 <label for="validationCustomUsername">Bank Name</label>
                 <div class="input-group">
                   <input class="form-control" id="validationCustomUsername" type="text" name="bank_name" placeholder="Bank Name" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+             
                 </div>
               </div>
 
@@ -145,7 +151,7 @@
                 <label for="validationCustomUsername">Branch</label>
                 <div class="input-group">
                   <input class="form-control" id="validationCustomUsername" type="text" name="branch" placeholder="Branch" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+             
                 </div>
               </div>
 
@@ -154,7 +160,7 @@
                 <label for="validationCustomUsername">Account Number</label>
                 <div class="input-group">
                   <input class="form-control" id="validationCustomUsername" type="text" name="account_number" placeholder="Account Number" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+             
                 </div>
               </div>
 
@@ -163,7 +169,7 @@
                 <label for="validationCustomUsername">Account Type</label>
                 <div class="input-group">
                   <input class="form-control" id="validationCustomUsername" type="text" name="account_type" placeholder="Account Type" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+             
                 </div>
               </div>
 
@@ -171,7 +177,7 @@
                 <label for="validationCustomUsername">IFCS Code</label>
                 <div class="input-group">
                   <input class="form-control" id="validationCustomUsername" type="text" name="ifcs_code" placeholder="IFCS Code" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+             
                 </div>
               </div>
 
@@ -180,7 +186,7 @@
                 <label for="validationCustomUsername">Joining Fee</label>
                 <div class="input-group">
                   <input class="form-control" id="validationCustomUsername" type="text" name="joining_fee" placeholder="Joining Fee" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+             
                 </div>
                 </div>  
 
@@ -189,7 +195,7 @@
                 <label for="validationCustomUsername">Investment</label>
                 <div class="input-group">
                   <input class="form-control" id="validationCustomUsername" type="text" name="investment" placeholder="investment" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+             
                 </div>
                 </div>
 
@@ -198,24 +204,28 @@
                 <label for="validationCustomUsername">Profile Image</label>
                 <div class="input-group">
                   <input class="form-control" id="validationCustomUsername" type="file" name="profile_image" placeholder="IFCS Code" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+             
                 </div>
+                <span class="text-danger">{{ $errors->first('profile_image') }}</span>
+
                 </div>
 
                <div class="col-md-4 mb-3">
                 <label for="validationCustomUsername">Pan Card Image</label>
                 <div class="input-group">
                   <input class="form-control" id="validationCustomUsername" type="file" name="pancard_img" placeholder="IFCS Code" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+             
                 </div>
+                <span class="text-danger">{{ $errors->first('pancard_img') }}</span>
               </div>
  
                 <div class="col-md-4 mb-3">
                 <label for="validationCustomUsername">Adhar Card Image(Front)</label>
                 <div class="input-group">
                   <input class="form-control" id="validationCustomUsername" type="file" name="ad_front" placeholder="IFCS Code" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+             
                 </div>
+                <span class="text-danger">{{ $errors->first('ad_front') }}</span>
               </div>
 
 
@@ -223,8 +233,9 @@
                 <label for="validationCustomUsername">Adhar Card Image(Back)</label>
                 <div class="input-group">
                   <input class="form-control" id="validationCustomUsername" type="file" name="ad_back" placeholder="IFCS Code" aria-describedby="inputGroupPrepend" >
-                  <div class="invalid-feedback">Please choose a username.</div>
+             
                 </div>
+                <span class="text-danger">{{ $errors->first('ad_back') }}</span>
                 </div>
 
                  

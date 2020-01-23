@@ -64,7 +64,10 @@
       </div>
     </div>
   </div>
+        <h1 style="text-align: center;">Welcome Admin :  {{Auth()->user()->name}} </h1>
+
 </div>
 <!-- Container-fluid Ends-->
         </div>
+
 @include('footer')
