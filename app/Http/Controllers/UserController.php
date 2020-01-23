@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\User;
-use App\Commission;
+use App\Commision;
 use Hash;
 use DB;
 use Illuminate\Http\Request;
@@ -100,12 +100,15 @@ class UserController extends Controller
       $User->ad_back=$filenamee;
       //images ends  
 
-
+  
 
 
        $timestamp = strtotime($User->joining_date);
 
        $day = date('d', $timestamp);
+
+       $month = date('m', $timestamp);
+
 
        $joining_fee_am=$request->input('joining_fee');
 
@@ -129,10 +132,22 @@ class UserController extends Controller
         $incetive=0;
        }
 
+       $Commission= new Commision();
+
+
+       $Commission->user_id = $request->input('user_id');
+       $Commission->member_name = $request->input('name');
+       $Commission->for_month = $month;
+       $Commission->for_date = $request->input('joining_date');
+       $Commission->incentive = $incetive;
+
+       $Commission->save();
 
 
 
-       dd($day);
+
+
+
 
       $User->save();
       return back()->with('success','User created successfully!');
