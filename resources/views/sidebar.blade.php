@@ -28,8 +28,8 @@
 
        <li><a class="sidebar-header" href="{{url('/')}}/admin/userview" class="" ><i data-feather="settings"></i><span>LIST USERS</span></a></li>
 
-       <li><a class="sidebar-header" href="{{url('/')}}/admin/userview" class="" ><i data-feather="settings"></i><span>BROKAGE/INCENTIVE</span></a></li>
-
+       <li><a class="sidebar-header" href="{{url('/')}}/admin/incentive" class="" ><i data-feather="settings"></i><span>BROKAGE/INCENTIVE</span></a></li>
+   
        @php
        }
        @endphp

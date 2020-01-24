@@ -5,8 +5,6 @@ use App\Commision;
 use Hash;
 use DB;
 use Illuminate\Http\Request;
-  
-
 class UserController extends Controller
 {
     /**
@@ -33,15 +31,15 @@ class UserController extends Controller
   
       public function store(Request $request)
     {
-     $request->validate([
-    'name' => 'required',
-    'email' => 'required|unique:users',
-    'name' => 'required',
-    'profile_image' => 'required',
-    'pancard_img' => 'required',
-    'ad_front' => 'required',
-    'ad_back' => 'required',
-      ]); 
+    //  $request->validate([
+    // 'name' => 'required',
+    // 'email' => 'required|unique:users',
+    // 'name' => 'required',
+    // 'profile_image' => 'required',
+    // 'pancard_img' => 'required',
+    // 'ad_front' => 'required',
+    // 'ad_back' => 'required',
+    //   ]); 
 
            $User=new User();
            $User->name=$request->input('name'); 
@@ -66,39 +64,39 @@ class UserController extends Controller
            $User->joining_fee =$request->input('joining_fee');      
            $User->investment  =$request->input('investment');   
 
-      //images starts
-      $realt = $request->file('profile_image');
-      $filenamet = time().'.'.$realt->getClientOriginalExtension();
-      $destinationPatht = public_path('/images/profile');
-      $realt->move($destinationPatht, $filenamet);
-      $User->profile_image=$filenamet;
-      //images ends  
+      // //images starts
+      // $realt = $request->file('profile_image');
+      // $filenamet = time().'.'.$realt->getClientOriginalExtension();
+      // $destinationPatht = public_path('/images/profile');
+      // $realt->move($destinationPatht, $filenamet);
+      // $User->profile_image=$filenamet;
+      // //images ends  
 
 
-      //images starts
-      $realo = $request->file('pancard_img');
-      $filenameo = time().'.'.$realo->getClientOriginalExtension();
-      $destinationPatho = public_path('/images/pan');
-      $realo->move($destinationPatho, $filenameo);
-      $User->pancard_img=$filenameo;
-      //images ends     
+      // //images starts
+      // $realo = $request->file('pancard_img');
+      // $filenameo = time().'.'.$realo->getClientOriginalExtension();
+      // $destinationPatho = public_path('/images/pan');
+      // $realo->move($destinationPatho, $filenameo);
+      // $User->pancard_img=$filenameo;
+      // //images ends     
 
-      //images starts
-      $realn = $request->file('ad_front');
-      $filenamen = time().'.'.$realn->getClientOriginalExtension();
-      $destinationPathn = public_path('/images/adhara_f');
-      $realn->move($destinationPathn, $filenamen);
-      $User->ad_front=$filenamen;
-      //images ends  
+      // //images starts
+      // $realn = $request->file('ad_front');
+      // $filenamen = time().'.'.$realn->getClientOriginalExtension();
+      // $destinationPathn = public_path('/images/adhara_f');
+      // $realn->move($destinationPathn, $filenamen);
+      // $User->ad_front=$filenamen;
+      // //images ends  
 
       
-      //images starts
-      $reale = $request->file('ad_back');
-      $filenamee = time().'.'.$reale->getClientOriginalExtension();
-      $destinationPathe = public_path('/images/adhara_b');
-      $reale->move($destinationPathe, $filenamee);
-      $User->ad_back=$filenamee;
-      //images ends  
+      // //images starts
+      // $reale = $request->file('ad_back');
+      // $filenamee = time().'.'.$reale->getClientOriginalExtension();
+      // $destinationPathe = public_path('/images/adhara_b');
+      // $reale->move($destinationPathe, $filenamee);
+      // $User->ad_back=$filenamee;
+      // //images ends  
 
   
 
@@ -109,22 +107,41 @@ class UserController extends Controller
 
        $month = date('m', $timestamp);
 
+       $year = date('yy', $timestamp);
 
-       $joining_fee_am=$request->input('joining_fee');
+ 
+ 
 
-       if ($day >= 1 && $day <=10)
+       $investment_amount=$request->input('investment');
+
+       $sponser_id=$request->input('sponser_id');
+
+       $role_id=$request->input('memeber_type');
+
+
+
+
+
+
+
+          // if Sponser Id Is Admin (Step-1)
+
+       if($sponser_id=='ADMIN')
        {
-          $incetive=($joining_fee_am*4/100);
+
+          if ($day >= 1 && $day <=10)
+       {
+          $incetive=($investment_amount*4/100);
        }
 
         if ($day >= 10 && $day <=15)
        {
-          $incetive=($joining_fee_am*2/100);
+          $incetive=($investment_amount*2/100);
        }
 
         if ($day >= 15 && $day <=20)
        {
-          $incetive=($joining_fee_am*1/100);
+          $incetive=($investment_amount*1/100);
        }
 
         if ($day >= 20 && $day <=31)
@@ -133,6 +150,46 @@ class UserController extends Controller
        }
 
        $Commission= new Commision();
+       $Commission->user_id = $request->input('user_id');
+       $Commission->member_name = $request->input('name');
+       $Commission->for_month = $month;
+       $Commission->for_date = $request->input('joining_date');
+       $Commission->incentive = $incetive;
+       $Commission->for_year = $year;
+       $Commission->save();
+
+       }
+
+
+       // Step-2
+
+       else
+       {
+
+
+          if ($day >= 1 && $day <=10)
+       {
+          $incetive=($investment_amount*4/100);
+       }
+
+        if ($day >= 10 && $day <=15)
+       {
+
+          $incetive=($investment_amount*2/100);
+       }
+
+        if ($day >= 15 && $day <=20)
+       {
+
+          $incetive=($investment_amount*1/100);
+       }
+
+        if ($day >= 20 && $day <=31)
+       {
+
+        $incetive=0;
+       }
+       $Commission= new Commision();
 
 
        $Commission->user_id = $request->input('user_id');
@@ -140,14 +197,57 @@ class UserController extends Controller
        $Commission->for_month = $month;
        $Commission->for_date = $request->input('joining_date');
        $Commission->incentive = $incetive;
+       $Commission->for_year = $year;
 
        $Commission->save();
 
+       if($Commission)
+       {
+
+        if($role_id=='1')
+        {
+          $incetive_for_associate=($investment_amount*0.5/100);
+        }
+        if($role_id=='2')
+        {
+          $incetive_for_associate=($investment_amount*1.5/100);
+        }
+       $Commission= new Commision();
+
+       $Commission->user_id = $request->input('sponser_id');
+       $Commission->for_month = $month;
+       $Commission->for_date = $request->input('joining_date');
+       $Commission->incentive = $incetive_for_associate;
+       $Commission->for_year = $year;
+
+       $Commission->save();
+ 
+       if($Commission)
+       {
+       $sponser_has_sponser=DB::table('users')
+       ->where('user_id',$sponser_id)
+       ->value('sponser_id');
+
+    
 
 
+      $incetive_for_associate2=($investment_amount*0.25/100);
 
+       $Commission= new Commision();
 
+       $Commission->user_id = $sponser_has_sponser;
+       $Commission->for_month = $month;
+       $Commission->for_date = $request->input('joining_date');
+       $Commission->incentive = $incetive_for_associate2;
+       $Commission->for_year = $year;
 
+       $Commission->save();
+
+       }
+       }
+       }
+
+// if Sponser Id Is Admin
 
       $User->save();
       return back()->with('success','User created successfully!');
@@ -168,6 +268,17 @@ class UserController extends Controller
       $users = User::where('user_id',$id)->get();
       return view('admin.profile')->with('users',$users);
     }
+
+        public function incentive()
+    {
+        $incentives=DB::table('commisions')
+        ->join('users','commisions.user_id','users.user_id')
+         ->select('commisions.user_id','users.name')
+         ->groupBy('commisions.user_id','users.name')
+        ->get();
+
+        return view('admin.incentive')->with('incentives',$incentives);
+    }
  
        public function destroy($id)
     {
@@ -175,5 +286,7 @@ class UserController extends Controller
         $users->delete();
         return back()->with('success','Department created successfully!');
     }
+
+
  
 }

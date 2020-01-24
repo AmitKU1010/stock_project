@@ -1,6 +1,5 @@
 <?php  
 
-
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -31,6 +30,9 @@ Route::get('/userview', 'UserController@view');
 Route::get('/userview/destroy/{id}','UserController@destroy');
 
 Route::get('/edit_profile/{id}','UserController@edit_profile');
+
+Route::get('/incentive','UserController@incentive');
+  
 
 });
 

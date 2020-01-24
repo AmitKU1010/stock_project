@@ -40,7 +40,7 @@
                   <option>Select</option>
                     @if(count($associates) > 0)
                     @foreach($associates as $associate)
-                	<option value="client">{{$associate->user_id}}</option>
+                	<option>{{$associate->user_id}}</option>
                     @endforeach
                     @endif
                 </select>
