@@ -26,7 +26,7 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
-
+ 
     /**
      * Create a new controller instance.
      *
@@ -39,19 +39,19 @@ class LoginController extends Controller
 
        protected function authenticated(Request $request, $user)
     {
-        if ($user->role_id == '1')
+        if ($user->is_office == '1')
         {
             $this->redirectTo = '/admin/dashboard';
         }
-           if ($user->role_id == '2')
+           if ($user->is_associate == '2')
         {
             $this->redirectTo = '/associate/dashboard';
         }
-           if ($user->role_id == '3')
+           if ($user->is_client == '3')
         {
             $this->redirectTo = '/client/dashboard';
         }
 
     }
-}
+} 
  

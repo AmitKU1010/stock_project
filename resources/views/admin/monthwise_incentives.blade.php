@@ -26,14 +26,14 @@
          @php 
          $i=1;
          @endphp
-         @if(count($incentives) > 0)
-         @foreach($incentives as $incentive)
+         @if(count($monthwise_incentives) > 0)
+         @foreach($monthwise_incentives as $monthwise_incentive)
                 	<tr>
                 	  <td>{{$i++}}</td>
-                    <td><a href="{{url('/')}}/admin/monthwise_incentive/{{ $incentive->user_id}}">{{$incentive->user_id}}</a></td>
-                	  <td>{{$incentive->name}}</td>
-                    <td>{{$incentive->inv}} Rs.</td>
-                    <td>{{$incentive->inc}} Rs.</td>
+                    <td><a href="{{url('/')}}/admin/monthwise_incentive/{{ $monthwise_incentive->user_id}}">{{$monthwise_incentive->user_id}}</a></td>
+                	  <td>{{$monthwise_incentive->name}}</td>
+                    <td>{{$monthwise_incentive->inv}} Rs.</td>
+                    <td>{{$monthwise_incentive->inc}} Rs.</td>
                 	</tr>
                   @endforeach
                   @endif

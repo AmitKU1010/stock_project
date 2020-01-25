@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $associates=DB::table('users')->where('role_id',2)->get();
+        $associates=DB::table('users')->where('is_associate',2)->get();
         return view('admin.user')->with('associates',$associates);
     }
   
@@ -40,13 +40,14 @@ class UserController extends Controller
     // 'ad_front' => 'required',
     // 'ad_back' => 'required',
     //   ]); 
-
+ 
            $User=new User();
            $User->name=$request->input('name'); 
            $User->email=$request->input('email');  
            $User->joining_date=$request->input('joining_date');       
            $User->password=Hash::make($request->input('password'));       
-           $User->role_id=$request->input('memeber_type');       
+           $User->is_associate=$request->input('is_associate');       
+           $User->is_client=$request->input('is_client');       
            $User->sponser_id=$request->input('sponser_id');       
            $User->user_id=$request->input('user_id');       
            $User->gender=$request->input('gender');       
@@ -122,7 +123,7 @@ class UserController extends Controller
 
 
 
-
+         
 
           // if Sponser Id Is Admin (Step-1)
 
@@ -157,7 +158,7 @@ class UserController extends Controller
        $Commission->incentive = $incetive;
        $Commission->for_year = $year;
        $Commission->save();
-
+ 
        }
 
 
@@ -246,7 +247,7 @@ class UserController extends Controller
        }
        }
        }
-
+ 
 // if Sponser Id Is Admin
 
       $User->save();
@@ -254,13 +255,26 @@ class UserController extends Controller
 
 
     }
-
+ 
     public function view()
     {
-        $users = User::where('id', '!=', auth()->id())->get();
-        $users=DB::table('users')->join('roles','users.role_id','roles.id')
-        ->where('users.id','!=',auth()->id())->get();
+        // $users = User::where('id', '!=', auth()->id())->get();
+
+        $users = DB::table('users')->where([
+    ['id', '!=',  auth()->id()],
+    ['is_associate', '=', 2],])
+        ->get();
         return view('admin.user_view')->with('users',$users);
+    }
+
+     public function client_list()
+    {
+
+        $users = DB::table('users')->where([
+    ['id', '!=',  auth()->id()],
+    ['is_client', '=', 3],])
+        ->get();
+        return view('admin.client_view')->with('users',$users);
     }
 
     public function edit_profile($id)
@@ -273,11 +287,25 @@ class UserController extends Controller
     {
         $incentives=DB::table('commisions')
         ->join('users','commisions.user_id','users.user_id')
-         ->select('commisions.user_id','users.name')
+         ->select('commisions.user_id','users.name', DB::raw('SUM(investment) as inv'),DB::raw('SUM(incentive) as inc'))
          ->groupBy('commisions.user_id','users.name')
         ->get();
 
         return view('admin.incentive')->with('incentives',$incentives);
+    }
+
+
+
+       public function monthwise_incentive($id)
+    {
+      $monthwise_incentives = DB::table('commisions')
+        ->join('users','commisions.user_id','users.user_id')
+         ->select('commisions.user_id','users.name', DB::raw('SUM(investment) as inv'),DB::raw('SUM(incentive) as inc'))
+         ->groupBy('commisions.user_id','users.name')
+         ->where('commisions.user_id',$id)
+        ->get();
+
+      return view('admin.monthwise_incentives')->with('monthwise_incentives',$monthwise_incentives);
     }
  
        public function destroy($id)

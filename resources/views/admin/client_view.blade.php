@@ -8,7 +8,7 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-header" style="background-color: #ccdcff;">
-          <h5>Associate Details</h5>
+          <h5>CLIENT Details</h5>
         </div>
         <div class="card-body">
           <div class="dt-ext table-responsive">
@@ -17,7 +17,7 @@
                 <tr>
                   <th>#</th>
                   <th>USER ID</th>
-                  <th>FULL NAME</th>
+                  <th>NAME</th>
                   <!-- <th>IS CLIENT</th> -->
                   <th>SPONSER ID</th>
                   <th>EMAIL</th>
@@ -101,7 +101,7 @@
                 <tr>
                    <th>#</th>
                   <th>USER ID</th>
-                  <th>FULL NAME</th>
+                  <th>NAME</th>
                   <!-- <th>IS CLIENT</th> -->
                   <th>SPONSER ID</th>
                   <th>EMAIL</th>

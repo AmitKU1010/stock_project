@@ -25,10 +25,22 @@
 
             <div class="form-row">
               <div class="col-md-4 mb-3">
-                <label for="validationCustom01">Member Type</label>
+                <label for="validationCustom01">ASSOCIATE</label>
                 <select class="form-control" name="memeber_type">
-                	<option value="2">Associate</option>
-                	<option value="3">Client</option>
+                  <option>Select</option>
+
+                	<option value="2">YES</option>
+                	<option value="0">NO</option>
+                </select>
+                              </div>
+
+                               <div class="col-md-4 mb-3">
+                <label for="validationCustom01">CLIENT</label>
+                <select class="form-control" name="memeber_type">
+                  <option >Select</option>
+
+                  <option value="3">YES</option>
+                  <option value="0">NO</option>
                 </select>
                               </div>
  

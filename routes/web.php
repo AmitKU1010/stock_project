@@ -25,13 +25,23 @@ Route::get('/user', 'UserController@index');
 
 Route::post('/user/store', 'UserController@store');
 
+
+
 Route::get('/userview', 'UserController@view');
-
 Route::get('/userview/destroy/{id}','UserController@destroy');
-
 Route::get('/edit_profile/{id}','UserController@edit_profile');
 
+
+
+Route::get('/client_list', 'UserController@client_list');
+
+
+
+
+
 Route::get('/incentive','UserController@incentive');
+
+Route::get('/monthwise_incentive/{id}','UserController@monthwise_incentive');
   
 
 });

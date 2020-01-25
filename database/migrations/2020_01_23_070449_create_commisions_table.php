@@ -16,6 +16,8 @@ class CreateCommisionsTable extends Migration
         Schema::create('commisions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id')->nullable();
+            $table->string('for_whom')->nullable();
+            $table->string('invest_money')->nullable();
             $table->string('member_name')->nullable();
             $table->string('for_month')->nullable();
             $table->date('for_date')->nullable();

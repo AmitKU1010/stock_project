@@ -8,7 +8,8 @@
                       <li class="breadcrumb-item"><a href="{{route('home')}}"><i data-feather="home"></i></a></li>
                       <li class="breadcrumb-item"><a href="{{route('home')}}">DASHBOARD</a></li>
                       <li class="breadcrumb-item"><a  href="{{url('/')}}/user">ADD USER</a></li>
-                      <li class="breadcrumb-item active"><a href="{{url('/')}}/userview">LIST USERS</a></li>
+                      <li class="breadcrumb-item active"><a href="{{url('/')}}/admin/userview">ASSOCIATES</a></li>
+                      <li class="breadcrumb-item active"><a href="{{url('/')}}/admin/client_list">CLIENT</a></li>
                     </ol>
                   </div>
                 </div>

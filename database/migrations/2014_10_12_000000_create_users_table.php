@@ -20,7 +20,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('joining_date')->nullable();
             $table->string('password')->nullable();
-            $table->string('role_id')->nullable();
+            $table->string('is_office')->nullable();
+            $table->string('is_associate')->nullable();
+            $table->string('is_client')->nullable();
             $table->string('sponser_id')->nullable();
             $table->string('user_id')->nullable();
             $table->string('gender')->nullable();
