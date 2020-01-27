@@ -26,7 +26,7 @@
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="validationCustom01">ASSOCIATE</label>
-                <select class="form-control" name="memeber_type">
+                <select class="form-control" name="is_associate">
                   <option>Select</option>
 
                 	<option value="2">YES</option>
@@ -36,7 +36,7 @@
 
                                <div class="col-md-4 mb-3">
                 <label for="validationCustom01">CLIENT</label>
-                <select class="form-control" name="memeber_type">
+                <select class="form-control" name="is_client">
                   <option >Select</option>
 
                   <option value="3">YES</option>

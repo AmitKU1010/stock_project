@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use DB;
 
 class TaskSchedule extends Command
 {
@@ -38,7 +39,19 @@ class TaskSchedule extends Command
     public function handle()
     {
      
-                                                                                                                                                                                                                               
+      $ff= DB::table('commisions')
+       ->select('user_id', 'for_whom', 'invest_money', 'member_name', 'for_month', 'for_date', 'for_year', 'incentive')
+       ->get();  
+       foreach($ff as $ffs)
+       {
+         $inv_mon =$ffs->invest_money*5/100;
+         echo $inv_mon;
+         DB::table('commisions')->insert(['invest_money' =>  $inv_mon]);
+
+       }
+ 
+ 
+       echo "success";                                                                                                                                                                                                                     
       
     }
 }

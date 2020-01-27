@@ -40,7 +40,7 @@ class UserController extends Controller
     // 'ad_front' => 'required',
     // 'ad_back' => 'required',
     //   ]); 
-  
+ 
            $User=new User();
            $User->name=$request->input('name'); 
            $User->email=$request->input('email');  
@@ -106,7 +106,7 @@ class UserController extends Controller
 
        $jd=$request->input('joining_date'); 
 
-        // $next_month = date('Y-m-d', strtotime('+1 month', strtotime($jd)));
+       // $next_month = date('Y-m-d', strtotime('+1 month', strtotime($jd)));
 
        $day = date('d', $timestamp);
 
@@ -118,6 +118,9 @@ class UserController extends Controller
 
        $next_month=date("m", $nxtm);
 
+
+ 
+  
 
        $investment_amount=$request->input('investment');
 
@@ -139,6 +142,7 @@ class UserController extends Controller
         // If he is a associate
        if($is_associate==2 && $is_client==3)
        {
+        dd('jhh');
 
             if ($day >= 1 && $day <=10)
        {
@@ -147,6 +151,7 @@ class UserController extends Controller
           $incentive_5th_client=($incetive*2.5/100);
 
           $incentive_10th_assoc=($incetive*1.5/100);
+
        }
 
         if ($day >= 10 && $day <=15)
@@ -187,8 +192,6 @@ class UserController extends Controller
        $Commission->for_date = $request->input('joining_date');
        $Commission->incentive = $incentive_5th_client;
        $Commission->incentive_type = 1;
-       $Commission->for_whom ='SELF CLIENT BONOUS';
-       $Commission->invest_money =$request->input('investment');
        $Commission->save();
 
        // for clinet
@@ -205,8 +208,6 @@ class UserController extends Controller
        $Commission->for_date = $request->input('joining_date');
        $Commission->incentive = $incentive_10th_assoc;
        $Commission->incentive_type = 2;
-       $Commission->for_whom ='SELF ASSOCIATE BONOUS';
-       $Commission->invest_money =$request->input('investment');
        $Commission->save();
        }
        // for assoco
@@ -264,8 +265,6 @@ class UserController extends Controller
        $Commission->for_date = $request->input('joining_date');
        $Commission->incentive = $incentive_5th_client;
        $Commission->incentive_type = 1;
-       $Commission->for_whom ='SELF CLIENT BONOUS';
-       $Commission->invest_money =$request->input('investment');
        $Commission->save();
        // for clinet
        }
@@ -273,7 +272,7 @@ class UserController extends Controller
        }
 
        }
- 
+
 
 
 
@@ -286,14 +285,11 @@ class UserController extends Controller
        ->where('user_id',$sponser_id)
        ->value('sponser_id');
 
-
        if($sponser_has_sponser!='')
        {
-
         // If he is a associate
        if($is_associate==2 && $is_client==3)
        {
-
             if ($day >= 1 && $day <=10)
        {
           $incetive=($investment_amount*4/100);
@@ -358,13 +354,9 @@ class UserController extends Controller
        $Commission->for_date = $request->input('joining_date');
        $Commission->incentive = $incentive_5th_client;
        $Commission->incentive_type = 1;
-       $Commission->for_whom ='SELF CLIENT BONOUS';
-       $Commission->invest_money =$request->input('investment');
        $Commission->save();
 
        // for clinet
-
-
 
        if($Commission)
        {
@@ -379,9 +371,6 @@ class UserController extends Controller
        $Commission->for_date = $request->input('joining_date');
        $Commission->incentive = $incentive_10th_assoc;
        $Commission->incentive_type = 2;
-
-       $Commission->for_whom ='SELF ASSOCIATE BONOUS';
-       $Commission->invest_money =$request->input('investment');
        $Commission->save();
        // for assoco
 
@@ -397,8 +386,6 @@ class UserController extends Controller
        $Commission->for_date = $request->input('joining_date');
        $Commission->incentive = $incentive_10th_sponser_assoc;
        $Commission->incentive_type = 3;
-       $Commission->for_whom =$request->input('user_id');
-       $Commission->invest_money =$request->input('investment');
        $Commission->save();
           // for sponer assoc
 
@@ -414,8 +401,6 @@ class UserController extends Controller
        $Commission->for_date = $request->input('joining_date');
        $Commission->incentive = $incentive_10th_sponser_assoc_has_assoc;
        $Commission->incentive_type = 4;
-       $Commission->for_whom =$request->input('user_id');
-       $Commission->invest_money =$request->input('investment');
        $Commission->save();
        // for sponer assoc has assoc
      }
@@ -429,7 +414,6 @@ class UserController extends Controller
        {
             if ($day >= 1 && $day <=10)
        {
-
           $incetive=($investment_amount*4/100);
 
           $incentive_5th_client=($incetive*2.5/100);
@@ -481,8 +465,6 @@ class UserController extends Controller
        $Commission->for_date = $request->input('joining_date');
        $Commission->incentive = $incentive_5th_client;
        $Commission->incentive_type = 1;
-       $Commission->for_whom ='SELF CLIENT BONOUS';
-       $Commission->invest_money =$request->input('investment');
        $Commission->save();
 
        // for clinet
@@ -499,8 +481,6 @@ class UserController extends Controller
        $Commission->for_date = $request->input('joining_date');
        $Commission->incentive = $incentive_10th_sponser_assoc;
        $Commission->incentive_type = 5;
-       $Commission->for_whom =$request->input('user_id');
-       $Commission->invest_money =$request->input('investment');
        $Commission->save();
           // for sponer assoc
 
@@ -516,8 +496,6 @@ class UserController extends Controller
        $Commission->for_date = $request->input('joining_date');
        $Commission->incentive = $incentive_10th_sponser_assoc_has_assoc;
        $Commission->incentive_type = 6;
-       $Commission->for_whom =$request->input('user_id');
-       $Commission->invest_money =$request->input('investment');
        $Commission->save();
        // for sponer assoc has assoc
      }
@@ -527,12 +505,26 @@ class UserController extends Controller
 }
 }
 
+
+
+
+
+       
+
+
+
+
+
+
+
+        dd('i m last');
+
       $User->save();
       return back()->with('success','User created successfully!');
 
 
     }
-
+ 
     public function view()
     {
         // $users = User::where('id', '!=', auth()->id())->get();

@@ -19,10 +19,13 @@ class CreateCommisionsTable extends Migration
             $table->string('for_whom')->nullable();
             $table->string('invest_money')->nullable();
             $table->string('member_name')->nullable();
+            $table->string('for_day')->nullable();
             $table->string('for_month')->nullable();
-            $table->date('for_date')->nullable();
             $table->string('for_year')->nullable();
+            $table->date('for_date')->nullable();
             $table->string('incentive')->nullable();
+            $table->string('incentive_type')->nullable();
+
             $table->timestamps();
         });
     }

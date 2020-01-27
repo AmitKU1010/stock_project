@@ -642,7 +642,7 @@ class DatabaseSeeder extends Seeder
             'is_associate' => '0',
             'is_client' => '0',
         ]);
-
+ 
                    DB::table('users')->insert([
             'name' => "CLIENT",
             'email' => 'client@gmail.com',
@@ -651,6 +651,41 @@ class DatabaseSeeder extends Seeder
             'is_associate' => '0',
             'is_client' => '0',
         ]);
+
+       DB::table('incentive_type')->insert([
+            'incentive_type' => "SELF_CLIENT",
+            'description' => 'SELF INCENTIVE FOR CLIENT',
+        ]);
+
+        DB::table('incentive_type')->insert([
+            'incentive_type' => "SELF_ASSOCIATE",
+            'description' => 'SELF INCENTIVE FOR ASSOCIATE',
+        ]);
+
+
+          DB::table('incentive_type')->insert([
+            'incentive_type' => "ASSOCIATE_JOIN_ASSOCIATE",
+            'description' => 'ASSOCIATE_JOIN_ASSOCIATE',
+        ]);
+
+        DB::table('incentive_type')->insert([
+            'incentive_type' => "ASSOCIATE_HAS_ASSOCIATE_JOIN_ASSOCIATE",
+            'description' => 'ASSOCIATE_HAS_ASSOCIATE_JOIN_ASSOCIATE',
+        ]);
+
+
+        DB::table('incentive_type')->insert([
+            'incentive_type' => "ASSOCIATE_JOIN_CLIENT",
+            'description' => 'ASSOCIATE_JOIN_CLIENT',
+        ]);
+
+        DB::table('incentive_type')->insert([
+            'incentive_type' => "ASSOCIATE_HAS_ASSOCIATE_JOIN_CLIENT",
+            'description' => 'ASSOCIATE_HAS_ASSOCIATE_JOIN_CLIENT',
+        ]);
+
+     
+        
 
  
     }
