@@ -112,11 +112,29 @@ class UserController extends Controller
 
        $month = date('m', $timestamp);
 
-       $year = date('yy', $timestamp);
+       // $year = date('yy', $timestamp);
+
+       // for next month year
+       $final = date("Y-m-d", strtotime("+1 month", $timestamp));
+       $nxdfgfdtm = strtotime($final);
+       $year = date('yy', $nxdfgfdtm);
+       // for next month year
+       
 
        $nxtm = strtotime("next month");
 
+
+
+
        $next_month=date("m", $nxtm);
+
+
+
+
+
+
+       dd($year);
+
 
 
        $investment_amount=$request->input('investment');
@@ -189,10 +207,11 @@ class UserController extends Controller
        $Commission->incentive_type = 1;
        $Commission->for_whom ='SELF CLIENT BONOUS';
        $Commission->invest_money =$request->input('investment');
+       $Commission->insertion_timing ='FIRST';
        $Commission->save();
 
        // for clinet
-
+ 
        // for assoco
        if($Commission)
        {
@@ -207,6 +226,8 @@ class UserController extends Controller
        $Commission->incentive_type = 2;
        $Commission->for_whom ='SELF ASSOCIATE BONOUS';
        $Commission->invest_money =$request->input('investment');
+       $Commission->insertion_timing ='FIRST';
+
        $Commission->save();
        }
        // for assoco
@@ -266,6 +287,8 @@ class UserController extends Controller
        $Commission->incentive_type = 1;
        $Commission->for_whom ='SELF CLIENT BONOUS';
        $Commission->invest_money =$request->input('investment');
+       $Commission->insertion_timing ='FIRST';
+
        $Commission->save();
        // for clinet
        }
@@ -287,7 +310,7 @@ class UserController extends Controller
        ->value('sponser_id');
 
 
-       if($sponser_has_sponser!='')
+       if($sponser_has_sponser!='' or $sponser_has_sponser='')
        {
 
         // If he is a associate
@@ -360,6 +383,8 @@ class UserController extends Controller
        $Commission->incentive_type = 1;
        $Commission->for_whom ='SELF CLIENT BONOUS';
        $Commission->invest_money =$request->input('investment');
+       $Commission->insertion_timing ='FIRST';
+
        $Commission->save();
 
        // for clinet
@@ -382,6 +407,8 @@ class UserController extends Controller
 
        $Commission->for_whom ='SELF ASSOCIATE BONOUS';
        $Commission->invest_money =$request->input('investment');
+       $Commission->insertion_timing ='FIRST';
+
        $Commission->save();
        // for assoco
 
@@ -399,9 +426,12 @@ class UserController extends Controller
        $Commission->incentive_type = 3;
        $Commission->for_whom =$request->input('user_id');
        $Commission->invest_money =$request->input('investment');
+       $Commission->insertion_timing ='FIRST';
+
        $Commission->save();
           // for sponer assoc
-
+       if($sponser_has_sponser!='')
+       {
        if($Commission)
        {
        // for sponer assoc has assoc
@@ -416,9 +446,12 @@ class UserController extends Controller
        $Commission->incentive_type = 4;
        $Commission->for_whom =$request->input('user_id');
        $Commission->invest_money =$request->input('investment');
+       $Commission->insertion_timing ='FIRST';
+
        $Commission->save();
        // for sponer assoc has assoc
      }
+   }
    }
  }
 }
@@ -483,6 +516,8 @@ class UserController extends Controller
        $Commission->incentive_type = 1;
        $Commission->for_whom ='SELF CLIENT BONOUS';
        $Commission->invest_money =$request->input('investment');
+       $Commission->insertion_timing ='FIRST';
+
        $Commission->save();
 
        // for clinet
@@ -501,9 +536,12 @@ class UserController extends Controller
        $Commission->incentive_type = 5;
        $Commission->for_whom =$request->input('user_id');
        $Commission->invest_money =$request->input('investment');
+       $Commission->insertion_timing ='FIRST';
+
        $Commission->save();
           // for sponer assoc
-
+       if($sponser_has_sponser!='')
+       {
        if($Commission)
        {
        // for sponer assoc has assoc
@@ -518,9 +556,12 @@ class UserController extends Controller
        $Commission->incentive_type = 6;
        $Commission->for_whom =$request->input('user_id');
        $Commission->invest_money =$request->input('investment');
+       $Commission->insertion_timing ='FIRST';
+
        $Commission->save();
        // for sponer assoc has assoc
      }
+   }
    }
 }
 }

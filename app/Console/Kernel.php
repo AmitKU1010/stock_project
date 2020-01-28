@@ -26,6 +26,8 @@ class Kernel extends ConsoleKernel
     {
          $schedule->command('demo:TaskSchedule')
                  ->everyMinute();
+
+                
     }
 
     /**

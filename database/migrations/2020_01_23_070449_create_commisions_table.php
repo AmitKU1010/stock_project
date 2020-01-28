@@ -25,7 +25,7 @@ class CreateCommisionsTable extends Migration
             $table->date('for_date')->nullable();
             $table->string('incentive')->nullable();
             $table->string('incentive_type')->nullable();
-
+            $table->string('insertion_timing')->nullable();
             $table->timestamps();
         });
     }

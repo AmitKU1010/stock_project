@@ -5,14 +5,15 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use DB;
 
-class TaskSchedule extends Command
+
+class TaskScheduleTen extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:TaskSchedule';
+    protected $signature = 'command:TaskScheduleTen';
 
     /**
      * The console command description.
@@ -23,20 +24,20 @@ class TaskSchedule extends Command
 
     /**
      * Create a new command instance.
-     * 
+     *
      * @return void
      */
     public function __construct()
     {
         parent::__construct();
     }
- 
+
     /**
      * Execute the console command.
      *
      * @return mixed
      */
-    public function handle()
+  public function handle()
     {
       $ff= DB::table('commisions')
       ->select('user_id', 'for_whom', 'invest_money', 'member_name','for_day', 'for_month', 'for_date', 'for_year', 'incentive','incentive_type')
@@ -51,8 +52,7 @@ class TaskSchedule extends Command
 
        foreach($ff as $ffs)
        {
-    if($current_month<=$ffs->for_month && $current_year<=$ffs->for_year)
-    
+    if($current_month>=$ffs->for_month && $current_year>=$ffs->for_year)
         {
          echo "do nothing";
         }
@@ -74,12 +74,6 @@ class TaskSchedule extends Command
          $for_year =$ffs->for_year;
          $incentive =$ffs->incentive;
 
-        if($ffs->incentive_type==1)
-        {
-         $incentive_client =$ffs->invest_money*2.5/100;
-     DB::table('commisions')->insert(['incentive' =>  $incentive_client,'for_whom' => $for_whom,'user_id' => $user_id,'for_month' => $for_month,'for_date' => $for_date,'for_day' => $for_day,'for_year' => $for_year,'incentive' => $incentive,'incentive_type' => 1] );
-         
-        }
 
          if($ffs->incentive_type==2)
         {
@@ -109,7 +103,6 @@ class TaskSchedule extends Command
     $incentive_client =$ffs->invest_money*0.5/100;
      DB::table('commisions')->insert(['incentive' =>  $incentive_client,'for_whom' => $for_whom,'user_id' => $user_id,'for_month' => $for_month,'for_date' => $for_date,'for_day' => $for_day,'for_year' => $for_year,'incentive' => $incentive,'incentive_type' => 6] );
         }
-
        }
  
  }
@@ -117,7 +110,5 @@ class TaskSchedule extends Command
        echo "success";                                                                                                                                                                                                     }              
       
     }
-
-
 
 }
