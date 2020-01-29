@@ -43,7 +43,7 @@ class TaskScheduleTen extends Command
       ->select('user_id', 'for_whom', 'invest_money', 'member_name','for_day', 'for_month', 'for_date', 'for_year', 'incentive','incentive_type')
        ->where('insertion_timing',"FIRST")
        ->get();  
-
+ 
        $current_date=date('Y-m-d');
        $current_day = date('d');
        $current_month = date('m');
@@ -52,7 +52,9 @@ class TaskScheduleTen extends Command
 
        foreach($ff as $ffs)
        {
-    if($current_month>=$ffs->for_month && $current_year>=$ffs->for_year)
+    if($current_month<=$ffs->for_month && $current_year<=$ffs->for_year)
+    
+    
         {
          echo "do nothing";
         }
@@ -78,30 +80,30 @@ class TaskScheduleTen extends Command
          if($ffs->incentive_type==2)
         {
     $incentive_client =$ffs->invest_money*1.5/100;
-     DB::table('commisions')->insert(['incentive' =>  $incentive_client,'for_whom' => $for_whom,'user_id' => $user_id,'for_month' => $for_month,'for_date' => $for_date,'for_day' => $for_day,'for_year' => $for_year,'incentive' => $incentive,'incentive_type' => 2]);
+     DB::table('commisions')->insert(['incentive' =>  $incentive_client,'for_whom' => $for_whom,'user_id' => $user_id,'for_month' => $current_month,'for_date' => $current_date,'for_day' => $current_day,'for_year' => $current_year,'incentive' => $incentive,'incentive_type' => 2]);
         }
 
          if($ffs->incentive_type==3)
         {
     $incentive_client =$ffs->invest_money*0.5/100;
-     DB::table('commisions')->insert(['incentive' =>  $incentive_client,'for_whom' => $for_whom,'user_id' => $user_id,'for_month' => $for_month,'for_date' => $for_date,'for_day' => $for_day,'for_year' => $for_year,'incentive' => $incentive,'incentive_type' => 3] );
+     DB::table('commisions')->insert(['incentive' =>  $incentive_client,'for_whom' => $for_whom,'user_id' => $user_id,'for_month' => $current_month,'for_date' => $current_date,'for_day' => $current_day,'for_year' => $current_year,'incentive' => $incentive,'incentive_type' => 3] );
         }
 
          if($ffs->incentive_type==4)
         {
     $incentive_client =$ffs->invest_money*0.25/100;
-     DB::table('commisions')->insert(['incentive' =>  $incentive_client,'for_whom' => $for_whom,'user_id' => $user_id,'for_month' => $for_month,'for_date' => $for_date,'for_day' => $for_day,'for_year' => $for_year,'incentive' => $incentive,'incentive_type' => 4] );
+     DB::table('commisions')->insert(['incentive' =>  $incentive_client,'for_whom' => $for_whom,'user_id' => $user_id,'for_month' => $current_month,'for_date' => $current_date,'for_day' => $current_day,'for_year' => $current_year,'incentive' => $incentive,'incentive_type' => 4] );
         }
 
           if($ffs->incentive_type==5)
         {
     $incentive_client =$ffs->invest_money*1.5/100;
-     DB::table('commisions')->insert(['incentive' =>  $incentive_client,'for_whom' => $for_whom,'user_id' => $user_id,'for_month' => $for_month,'for_date' => $for_date,'for_day' => $for_day,'for_year' => $for_year,'incentive' => $incentive,'incentive_type' => 5] );
+     DB::table('commisions')->insert(['incentive' =>  $incentive_client,'for_whom' => $for_whom,'user_id' => $user_id,'for_month' => $current_month,'for_date' => $current_date,'for_day' => $current_day,'for_year' => $current_year,'incentive' => $incentive,'incentive_type' => 5] );
         }
            if($ffs->incentive_type==6)
         {
     $incentive_client =$ffs->invest_money*0.5/100;
-     DB::table('commisions')->insert(['incentive' =>  $incentive_client,'for_whom' => $for_whom,'user_id' => $user_id,'for_month' => $for_month,'for_date' => $for_date,'for_day' => $for_day,'for_year' => $for_year,'incentive' => $incentive,'incentive_type' => 6] );
+     DB::table('commisions')->insert(['incentive' =>  $incentive_client,'for_whom' => $for_whom,'user_id' => $user_id,'for_month' => $current_month,'for_date' => $current_date,'for_day' => $current_day,'for_year' => $current_year,'incentive' => $incentive,'incentive_type' => 6] );
         }
        }
  

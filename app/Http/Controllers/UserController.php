@@ -133,7 +133,6 @@ class UserController extends Controller
 
 
 
-       dd($year);
 
 
 
@@ -603,26 +602,45 @@ class UserController extends Controller
 
         public function incentive()
     {
+
+       $current_date=date('Y-m-d');
+       $current_day = date('d');
+
+       $current_day_into_number = (int)$current_day;
+
+       $current_month = date('m');
+       $current_year = date('Y');
+
+ 
+
+        
+   
         $incentives=DB::table('commisions')
         ->join('users','commisions.user_id','users.user_id')
          ->select('commisions.user_id','users.name', DB::raw('SUM(investment) as inv'),DB::raw('SUM(incentive) as inc'))
+          ->where([
+    ['commisions.for_month', '<=', $current_month],
+    ['commisions.for_year', '<=', $current_year],['commisions.for_day', '<=', $current_day_into_number],])
          ->groupBy('commisions.user_id','users.name')
         ->get();
+
+ 
 
         return view('admin.incentive')->with('incentives',$incentives);
     }
 
-
+ 
 
        public function monthwise_incentive($id)
     {
       $monthwise_incentives = DB::table('commisions')
         ->join('users','commisions.user_id','users.user_id')
-         ->select('commisions.user_id','users.name', DB::raw('SUM(investment) as inv'),DB::raw('SUM(incentive) as inc'))
-         ->groupBy('commisions.user_id','users.name')
+         ->select('commisions.for_month','commisions.for_year','commisions.user_id','users.name', DB::raw('SUM(investment) as inv'),DB::raw('SUM(incentive) as inc'))
+         ->groupBy('commisions.user_id','users.name','commisions.for_month','commisions.for_year')
          ->where('commisions.user_id',$id)
         ->get();
 
+ 
       return view('admin.monthwise_incentives')->with('monthwise_incentives',$monthwise_incentives);
     }
  

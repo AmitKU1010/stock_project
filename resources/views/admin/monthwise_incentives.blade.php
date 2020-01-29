@@ -16,6 +16,7 @@
               <thead>
                 <tr>
                   <th>#</th>
+                  <th>MONTH</th>
                   <th>USER ID</th>
                   <th>NAME</th>
                   <th>TOTAL BUSSINESS</th>
@@ -30,6 +31,7 @@
          @foreach($monthwise_incentives as $monthwise_incentive)
                 	<tr>
                 	  <td>{{$i++}}</td>
+                    <td>{{$monthwise_incentive->for_month}}</td>
                     <td><a href="{{url('/')}}/admin/monthwise_incentive/{{ $monthwise_incentive->user_id}}">{{$monthwise_incentive->user_id}}</a></td>
                 	  <td>{{$monthwise_incentive->name}}</td>
                     <td>{{$monthwise_incentive->inv}} Rs.</td>
@@ -37,11 +39,12 @@
                 	</tr>
                   @endforeach
                   @endif
- 
+  
               </tbody>
               <tfoot>
                 <tr>
                    <th>#</th>
+                  <th>MONTH</th>
                   <th>USER ID</th>
                   <th>NAME</th>
                   <th>TOTAL BUSSINESS</th>
