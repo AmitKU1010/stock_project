@@ -82,7 +82,7 @@
                   
                   <td>{{$user->investment}}</td>
               		<td>
-                                  <a href="" class="btn btn-primary btn-xs" style="border-radius: 8px;" title="EDIT">
+                                  <a href="{{url('/')}}/admin/edit_user/{{ $user->user_id}}" class="btn btn-primary btn-xs" style="border-radius: 8px;" title="EDIT">
                                     <i class="fa fa-pencil mr-1"></i>
                                                                         
                                   </a>

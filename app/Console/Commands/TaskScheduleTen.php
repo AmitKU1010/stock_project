@@ -63,6 +63,7 @@ class TaskScheduleTen extends Command
             echo "i m runng";
         if($ffs->for_day==$current_day && $ffs->for_month==$current_month&& $ffs->for_year==$current_year)
         {
+         echo "do nothing here also";
             
         }
         else

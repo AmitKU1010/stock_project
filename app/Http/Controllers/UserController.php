@@ -115,24 +115,32 @@ class UserController extends Controller
        // $year = date('yy', $timestamp);
 
        // for next month year
-       $final = date("Y-m-d", strtotime("+1 month", $timestamp));
+      $final = date("Y-m-d", strtotime("first day of +1 month", $timestamp));
+     
+
+
        $nxdfgfdtm = strtotime($final);
        $year = date('yy', $nxdfgfdtm);
+
        // for next month year
-       
 
-       $nxtm = strtotime("next month");
+       // $nxtm = strtotime("next month");
 
+       $next_month=date('m', $nxdfgfdtm);
 
-
-
-       $next_month=date("m", $nxtm);
+       // dd($next_month);
 
 
+       // for next month incentive at 5th and 10th
+     $one_month_ahed_five = date("Y-m-5", strtotime("first day of +1 month", $timestamp));
 
+       // dd($one_month_ahed_five);
+         
+    $one_month_ahed_ten = date("Y-m-10", strtotime("first day of +1 month", $timestamp));
 
+     // dd($one_month_ahed_ten);
 
-
+       // for next month incentive at 5th and 10th
 
 
 
@@ -189,19 +197,22 @@ class UserController extends Controller
         if ($day >= 20 && $day <=31)
        {
         $incetive=0;
+
+        $incentive_5th_client=0;
+
+        $incentive_10th_assoc=0;
        }
 
 
        // for clinet
-       if($incetive !=0)
-       {
+       
        $Commission= new Commision();
        $Commission->user_id = $request->input('user_id');
        $Commission->member_name = $request->input('name');
        $Commission->for_day = 5;
        $Commission->for_month = $next_month;
        $Commission->for_year = $year;
-       $Commission->for_date = $request->input('joining_date');
+       $Commission->for_date = $one_month_ahed_five;
        $Commission->incentive = $incentive_5th_client;
        $Commission->incentive_type = 1;
        $Commission->for_whom ='SELF CLIENT BONOUS';
@@ -220,7 +231,7 @@ class UserController extends Controller
        $Commission->for_day = 10;
        $Commission->for_month = $next_month;
        $Commission->for_year = $year;
-       $Commission->for_date = $request->input('joining_date');
+       $Commission->for_date = $one_month_ahed_ten;
        $Commission->incentive = $incentive_10th_assoc;
        $Commission->incentive_type = 2;
        $Commission->for_whom ='SELF ASSOCIATE BONOUS';
@@ -232,7 +243,6 @@ class UserController extends Controller
        // for assoco
 
 
-       }
         
        }
 
@@ -269,19 +279,21 @@ class UserController extends Controller
         if ($day >= 20 && $day <=31)
        {
         $incetive=0;
+
+        $incentive_5th_client=0;
+
        }
 
 
        // for clinet
-       if($incetive !=0)
-       {
+      
        $Commission= new Commision();
        $Commission->user_id = $request->input('user_id');
        $Commission->member_name = $request->input('name');
        $Commission->for_day = 5;
        $Commission->for_month = $next_month;
        $Commission->for_year = $year;
-       $Commission->for_date = $request->input('joining_date');
+       $Commission->for_date = $one_month_ahed_five;
        $Commission->incentive = $incentive_5th_client;
        $Commission->incentive_type = 1;
        $Commission->for_whom ='SELF CLIENT BONOUS';
@@ -290,7 +302,7 @@ class UserController extends Controller
 
        $Commission->save();
        // for clinet
-       }
+       
          
        }
 
@@ -360,7 +372,15 @@ class UserController extends Controller
 
         if ($day >= 20 && $day <=31)
        {
-        $incetive=0;
+          $incetive=0;
+
+          $incentive_5th_client=0;
+
+          $incentive_10th_assoc=0;
+
+          $incentive_10th_sponser_assoc=0;
+
+          $incentive_10th_sponser_assoc_has_assoc=0;
        }
 
 
@@ -369,15 +389,14 @@ class UserController extends Controller
 
 
        // for clinet
-       if($incetive !=0)
-       {
+      
        $Commission= new Commision();
        $Commission->user_id = $request->input('user_id');
        $Commission->member_name = $request->input('name');
        $Commission->for_day = 5;
        $Commission->for_month = $next_month;
        $Commission->for_year = $year;
-       $Commission->for_date = $request->input('joining_date');
+       $Commission->for_date = $one_month_ahed_five;
        $Commission->incentive = $incentive_5th_client;
        $Commission->incentive_type = 1;
        $Commission->for_whom ='SELF CLIENT BONOUS';
@@ -400,7 +419,7 @@ class UserController extends Controller
        $Commission->for_day = 10;
        $Commission->for_month = $next_month;
        $Commission->for_year = $year;
-       $Commission->for_date = $request->input('joining_date');
+       $Commission->for_date = $one_month_ahed_ten;
        $Commission->incentive = $incentive_10th_assoc;
        $Commission->incentive_type = 2;
 
@@ -420,7 +439,7 @@ class UserController extends Controller
        $Commission->for_day = 10;
        $Commission->for_month = $next_month;
        $Commission->for_year = $year;
-       $Commission->for_date = $request->input('joining_date');
+       $Commission->for_date = $one_month_ahed_ten;
        $Commission->incentive = $incentive_10th_sponser_assoc;
        $Commission->incentive_type = 3;
        $Commission->for_whom =$request->input('user_id');
@@ -440,20 +459,19 @@ class UserController extends Controller
        $Commission->for_day = 10;
        $Commission->for_month = $next_month;
        $Commission->for_year = $year;
-       $Commission->for_date = $request->input('joining_date');
+       $Commission->for_date = $one_month_ahed_ten;
        $Commission->incentive = $incentive_10th_sponser_assoc_has_assoc;
        $Commission->incentive_type = 4;
        $Commission->for_whom =$request->input('user_id');
        $Commission->invest_money =$request->input('investment');
        $Commission->insertion_timing ='FIRST';
-
        $Commission->save();
        // for sponer assoc has assoc
      }
    }
    }
  }
-}
+
 }
 
     // If he is a client
@@ -498,19 +516,24 @@ class UserController extends Controller
 
         if ($day >= 20 && $day <=31)
        {
-        $incetive=0;
+       $incetive=0;
+
+       $incentive_5th_client=0;
+
+       $incentive_10th_sponser_assoc=0;
+
+       $incentive_10th_sponser_assoc_has_assoc=0;
        }
 
        // for clinet
-       if($incetive !=0)
-       {
+      
        $Commission= new Commision();
        $Commission->user_id = $request->input('user_id');
        $Commission->member_name = $request->input('name');
        $Commission->for_day = 5;
        $Commission->for_month = $next_month;
        $Commission->for_year = $year;
-       $Commission->for_date = $request->input('joining_date');
+       $Commission->for_date = $one_month_ahed_five;
        $Commission->incentive = $incentive_5th_client;
        $Commission->incentive_type = 1;
        $Commission->for_whom ='SELF CLIENT BONOUS';
@@ -530,7 +553,7 @@ class UserController extends Controller
        $Commission->for_day = 10;
        $Commission->for_month = $next_month;
        $Commission->for_year = $year;
-       $Commission->for_date = $request->input('joining_date');
+       $Commission->for_date = $one_month_ahed_ten;
        $Commission->incentive = $incentive_10th_sponser_assoc;
        $Commission->incentive_type = 5;
        $Commission->for_whom =$request->input('user_id');
@@ -550,7 +573,7 @@ class UserController extends Controller
        $Commission->for_day = 10;
        $Commission->for_month = $next_month;
        $Commission->for_year = $year;
-       $Commission->for_date = $request->input('joining_date');
+       $Commission->for_date = $one_month_ahed_ten;
        $Commission->incentive = $incentive_10th_sponser_assoc_has_assoc;
        $Commission->incentive_type = 6;
        $Commission->for_whom =$request->input('user_id');
@@ -562,7 +585,7 @@ class UserController extends Controller
      }
    }
    }
-}
+
 }
 }
 }
@@ -619,8 +642,7 @@ class UserController extends Controller
         ->join('users','commisions.user_id','users.user_id')
          ->select('commisions.user_id','users.name', DB::raw('SUM(investment) as inv'),DB::raw('SUM(incentive) as inc'))
           ->where([
-    ['commisions.for_month', '<=', $current_month],
-    ['commisions.for_year', '<=', $current_year],['commisions.for_day', '<=', $current_day_into_number],])
+    ['commisions.for_date', '<=', $current_date],])
          ->groupBy('commisions.user_id','users.name')
         ->get();
 
@@ -633,15 +655,57 @@ class UserController extends Controller
 
        public function monthwise_incentive($id)
     {
-      $monthwise_incentives = DB::table('commisions')
-        ->join('users','commisions.user_id','users.user_id')
-         ->select('commisions.for_month','commisions.for_year','commisions.user_id','users.name', DB::raw('SUM(investment) as inv'),DB::raw('SUM(incentive) as inc'))
-         ->groupBy('commisions.user_id','users.name','commisions.for_month','commisions.for_year')
-         ->where('commisions.user_id',$id)
-        ->get();
 
+       $current_date=date('Y-m-d');
+       $current_day = date('d');
+
+       $current_day_into_number = (int)$current_day;
+
+       $current_month = date('m');
+       $current_year = date('Y');
+
+
+     $monthwise_incentives = DB::table('commisions')
+        ->join('users','commisions.user_id','users.user_id')
+         ->select(DB::raw('YEAR(for_date) year, MONTH(for_date) month'),'commisions.user_id','users.name','users.investment as inv',DB::raw('SUM(incentive) as inc'))
+         ->groupBy('commisions.user_id','users.name','year','month','inv')
+         ->where([['commisions.for_date', '<=', $current_date],['commisions.user_id', '=', $id],])
+         ->orderBy('year', 'DESC')
+        ->get();
+ 
  
       return view('admin.monthwise_incentives')->with('monthwise_incentives',$monthwise_incentives);
+    }
+
+    public function monthwise_incentive_details($id,$month,$year)
+    {
+      $current_date=date('Y-m-d');
+       $current_day = date('d');
+
+       $current_day_into_number = (int)$current_day;
+
+       $current_month = date('m');
+       $current_year = date('Y');
+
+       $month_into_num = (int)$month;
+       
+ 
+   $monthwise_incentive_details= DB::table('commisions')
+        ->join('users','commisions.user_id','users.user_id')
+         ->select(DB::raw('YEAR(for_date) year, MONTH(for_date) month'),'commisions.user_id','users.name','users.investment as inv','commisions.*')
+         
+         ->where([['commisions.for_date', '<=', $current_date],['commisions.user_id', '=', $id],['for_month', '=', $month_into_num],['for_year', '=', $year],])
+        ->get();
+
+         
+      return view('admin.monthwise_incentive_details')->with('monthwise_incentive_details',$monthwise_incentive_details);
+    }
+
+    public function edit_user($id)
+    {
+        $users=DB::table('users')->where('user_id',$id)->get();
+
+      return view('admin.edit_user')->with('users',$users);
     }
  
        public function destroy($id)

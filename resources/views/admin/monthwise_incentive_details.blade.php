@@ -1,4 +1,4 @@
-@include('header')
+  @include('header')
 @include('sidebar')  
 <div class="page-body">
 @include('links')  
@@ -14,45 +14,44 @@
           <div class="dt-ext table-responsive">
             <table class="display" id="export-button">
               <thead>
-              <tr>
-              <th>#</th>
-              <th>USER ID</th>
-              <th>NAME</th>
-              <th>TOTAL BUSSINESS</th>
-              <th>TOTAL INCENTIVE</th>
-              <th>PAY OUT</th>
-              <th>STATUS</th>
-
+                <tr>
+                  <th>#</th>
+                  <th>FOR WHOM</th>
+                  <th>USER ID</th>
+                  <th>NAME</th>
+                  <th>TOTAL INCENTIVE</th>
+                  <th>PAY OUT</th>
                 </tr>
-              </thead>
-              <tbody> 
+              </thead> 
+              <tbody>  
          @php 
          $i=1;
          @endphp
-         @if(count($incentives) > 0)
-         @foreach($incentives as $incentive)
+         @if(count($monthwise_incentive_details) > 0)
+         @foreach($monthwise_incentive_details as $monthwise_incentive_detail)
                 	<tr>
                 	  <td>{{$i++}}</td>
-                    <td><a href="{{url('/')}}/admin/monthwise_incentive/{{ $incentive->user_id}}">{{$incentive->user_id}}</a></td>
-                	  <td>{{$incentive->name}}</td>
-                    <td>{{$incentive->inv}} Rs.</td>
-                    <td>{{$incentive->inc}} Rs.</td>
-                    <td>0 Rs.</td>
-                    <td>HOLD</td>
+                    <td>{{$monthwise_incentive_detail->for_whom}}</a></td>
+                    <td>{{$monthwise_incentive_detail->user_id}}</a></td>
+                	  <td>{{$monthwise_incentive_detail->name}}</td>
+
+               
+                    <td>{{$monthwise_incentive_detail->incentive}} Rs.</td>
+                    <td>100%</td>
+
                 	</tr>
                   @endforeach
                   @endif
- 
+  
               </tbody>
               <tfoot>
                 <tr>
-                   <th>#</th>
+                 <th>#</th>
+                  <th>FOR WHOM</th>
                   <th>USER ID</th>
                   <th>NAME</th>
-                  <th>TOTAL BUSSINESS</th>
                   <th>TOTAL INCENTIVE</th>
-                   <th>PAY OUT</th>
-                  <th>STATUS</th>
+                  <th>PAY OUT</th>
                 </tr>
               </tfoot>
             </table>
@@ -64,5 +63,6 @@
 <!-- Container-fluid Ends-->
         </div>
         </div>
+
 
 @include('footer')

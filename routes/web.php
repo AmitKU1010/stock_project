@@ -31,6 +31,9 @@ Route::get('/userview', 'UserController@view');
 Route::get('/userview/destroy/{id}','UserController@destroy');
 Route::get('/edit_profile/{id}','UserController@edit_profile');
 
+Route::get('/edit_user/{id}','UserController@edit_user');
+
+
 
 
 Route::get('/client_list', 'UserController@client_list');
@@ -42,6 +45,8 @@ Route::get('/client_list', 'UserController@client_list');
 Route::get('/incentive','UserController@incentive');
 
 Route::get('/monthwise_incentive/{id}','UserController@monthwise_incentive');
+
+Route::get('/monthwise_incentive_details/{id}/{month}/{year}','UserController@monthwise_incentive_details');
   
 
 });
