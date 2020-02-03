@@ -703,9 +703,14 @@ class UserController extends Controller
 
     public function edit_user($id)
     {
-        $users=DB::table('users')->where('user_id',$id)->get();
+        $user=DB::table('users')->where('user_id',$id)->get();
 
-      return view('admin.edit_user')->with('users',$users);
+        $users_two=DB::table('users')->where([['is_associate', '=', 2],])->get();
+
+
+      return view('admin.edit_user',['user'=>$user,'users_two'=>$users_two]);
+
+
     }
  
        public function destroy($id)

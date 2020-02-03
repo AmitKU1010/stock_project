@@ -13,7 +13,10 @@
                     </div>
                 @endif
 
-          
+              
+
+                 @if(count($users) > 0)
+                    @foreach($users as $user)
     <div class="row">
     <div class="col-sm-12">
       <div class="card">
@@ -46,15 +49,34 @@
                 </select>
                               </div>
 
-           
+                               @endforeach
+                               @endif
+
   
  
                <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Sponer ID</label>
       
-            
+                <select class="form-control myselect2" style="width: 330px;" name="sponser_id" id="sponser_id">
+                  <option>Select</option>
+                   @if(count($users_two) > 0)
+                    @foreach($users_two as $users_two)
+                   
+                  <option value="{{$users_two->sponser_id}}"  @if($user->sponser_id==$users_two->sponser_id) selected='selected' @endif  >
+
+                  {{$users_two->sponser_id}}
+
+                   </option>
+
+         @endforeach
+         @endif
+                   
+                </select>
                               </div>
 
+
+     @if(count($users) > 0)
+                    @foreach($users as $user)
 
                <div class="col-md-4 mb-3">
                 <label for="validationCustom02">User ID</label>
@@ -276,7 +298,8 @@
       
         </div>
 
-
+         @endforeach
+         @endif
 
 
 @include('footer')
