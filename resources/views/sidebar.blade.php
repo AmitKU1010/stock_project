@@ -14,8 +14,47 @@
       <p>({{ Auth::user()->role }})</p>
     </div>
     <ul class="sidebar-menu"> 
+
+         @php
+         $auth_id=Auth::user()->is_office;
+
+         if($auth_id=='1')
+         {
+      @endphp
  
-      <li><a class="sidebar-header " href="{{route('home')}}"><i data-feather="menu"></i><span>DASHBOARD</span></a></li>
+      <li><a class="sidebar-header " href="{{url('/')}}/admin/dashboard"><i data-feather="menu"></i><span>DASHBOARD</span></a></li>
+
+             @php
+       }
+       @endphp
+ 
+           @php
+         $auth_id=Auth::user()->is_office;
+
+         if($auth_id=='2')
+         {
+      @endphp
+ 
+      <li><a class="sidebar-header " href="{{url('/')}}/associate/dashboard"><i data-feather="menu"></i><span>DASHBOARD</span></a></li>
+
+             @php
+       }
+       @endphp
+
+ 
+           @php
+         $auth_id=Auth::user()->is_office;
+
+         if($auth_id=='3')
+         {
+      @endphp
+ 
+      <li><a class="sidebar-header " href="{{url('/')}}/client/dashboard"><i data-feather="menu"></i><span>DASHBOARD</span></a></li>
+
+             @php
+       }
+       @endphp
+
 
           @php
          $auth_id=Auth::user()->is_office;
@@ -72,10 +111,70 @@
        }
        @endphp
 
+
+
+
+
+
+
+       <!--Associate Starts Here  -->
+
+
+         @php
+         $auth_id=Auth::user()->is_office;
+
+         if($auth_id=='2')
+         {
+      @endphp
+
+       <li><a class="sidebar-header" href="{{url('/')}}/admin/incentive" class="" ><i data-feather="settings"></i><span>BALANCE-SHEET</span></a></li>
+
+       <li><a class="sidebar-header" href="{{url('/')}}/associate/incentive" class="" ><i data-feather="settings"></i><span>BROKAGE/INCENTIVE</span></a></li>
+
+       <li><a class="sidebar-header" href="{{url('/')}}/admin/incentive" class="" ><i data-feather="settings"></i><span>REQUEST A PAYOUT</span></a></li>
+
+       <li><a class="sidebar-header" href="{{url('/')}}/admin/incentive" class="" ><i data-feather="settings"></i><span>REQUEST HISTORY</span></a></li>
+
+<!-- 
+      <li class="">
+        <a class="sidebar-header" href="#"><i data-feather="airplay"></i><span>MEMBERS</span><i class="fa fa-angle-right pull-right"></i></a>
+        <ul class="sidebar-submenu">
+          <li><a href="{{url('/')}}/admin/user" class=""><i class="fa fa-circle"></i>ADD USERS</a></li>
+          <li><a href="{{url('/')}}/admin/userview" class=""><i class="fa fa-circle"></i>LIST USERS</a></li>
+        </ul>
+      </li>
+
+
+      <li class="">
+        <a class="sidebar-header" href="#"><i data-feather="airplay"></i><span>ACCOUNTS</span><i class="fa fa-angle-right pull-right"></i></a>
+        <ul class="sidebar-submenu">
+          <li><a href="{{url('/')}}/admin/incentive" class=""><i class="fa fa-circle"></i>BROKAGE/INCENTIVES</a></li>
+          <li><a href="{{url('/')}}/admin/userview" class=""><i class="fa fa-circle"></i>REQUEST A PAYOUT</a></li>
+
+          <li><a href="{{url('/')}}/admin/userview" class=""><i class="fa fa-circle"></i>REQUEST HISTORY</a></li>
+        </ul>
+      </li> -->
+
+      <li class="">
+        <a class="sidebar-header" href="#"><i data-feather="airplay"></i><span>SETTINGS</span><i class="fa fa-angle-right pull-right"></i></a>
+        <ul class="sidebar-submenu">
+          <li><a href="{{url('/')}}/admin/incentive" class=""><i class="fa fa-circle"></i>MY PROFILE</a></li>
+          <li><a href="{{url('/')}}/admin/userview" class=""><i class="fa fa-circle"></i>CHANGE PASSWORD</a></li>
+
+          <li><a href="{{url('/')}}/admin/userview" class=""><i class="fa fa-circle"></i>LOGOUT</a></li>
+        </ul>
+      </li>
+
+       @php
+       }
+       @endphp
+
     </ul>
   </div>
 </div>
 <!-- Right sidebar Ends-->
+
+<!--Associate Starts Here  -->
 
 
 

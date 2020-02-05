@@ -82,6 +82,12 @@
                   
                   <td>{{$user->investment}}</td>
               		<td>
+
+
+                                <!--  <a href="{{url('/')}}/admin/show_user_tree_client/{{ $user->user_id}}" class="btn btn-primary btn-xs" id="createNew" style="border-radius: 8px;" title="SHOW USER TREE">
+                                    <i class="fa fa-user-circle"></i>
+                                  </a> -->
+
                                   <a href="" class="btn btn-primary btn-xs" style="border-radius: 8px;" title="EDIT">
                                     <i class="fa fa-pencil mr-1"></i>
                                                                         

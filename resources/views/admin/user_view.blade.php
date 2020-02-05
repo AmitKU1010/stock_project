@@ -22,6 +22,8 @@
                   <th>SPONSER ID</th>
                   <th>EMAIL</th>
                   <th>INVEST</th>
+                  <th>IS ASSOCIATE</th>
+                  <th>IS CLIENT</th>
                   <th>Action</th>
 
                 </tr>
@@ -81,10 +83,19 @@
               		<td>{{$user->email}}</td>
                   
                   <td>{{$user->investment}}</td>
+                  <td>{{$user->is_associate}}</td>
+                  <td>{{$user->is_client}}</td>
+
               		<td>
+                                   
+                                  <a href="{{url('/')}}/admin/show_user_tree/{{ $user->user_id}}" class="btn btn-primary btn-xs" id="createNew" style="border-radius: 8px;" title="SHOW USER TREE">
+                                    <i class="fa fa-user-circle"></i>
+                                                                        
+                                  </a>
+
+
                                   <a href="{{url('/')}}/admin/edit_user/{{ $user->user_id}}" class="btn btn-primary btn-xs" style="border-radius: 8px;" title="EDIT">
                                     <i class="fa fa-pencil mr-1"></i>
-                                                                        
                                   </a>
 
                                   <a href="{{ url('/')}}/admin/userview/destroy/{{ $user->user_id}} " class="btn btn-danger btn-xs" style="border-radius: 8px;" title="DELETE" onclick="return confirm('Are you sure you want to delete this user?');">
@@ -99,13 +110,15 @@
               </tbody>
               <tfoot>
                 <tr>
-                   <th>#</th>
+                     <th>#</th>
                   <th>USER ID</th>
                   <th>FULL NAME</th>
                   <!-- <th>IS CLIENT</th> -->
                   <th>SPONSER ID</th>
                   <th>EMAIL</th>
                   <th>INVEST</th>
+                  <th>IS ASSOCIATE</th>
+                  <th>IS CLIENT</th>
                   <th>Action</th>
                 </tr>
               </tfoot>

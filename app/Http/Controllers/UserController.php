@@ -672,7 +672,7 @@ class UserController extends Controller
          ->where([['commisions.for_date', '<=', $current_date],['commisions.user_id', '=', $id],])
          ->orderBy('year', 'DESC')
         ->get();
- 
+  
  
       return view('admin.monthwise_incentives')->with('monthwise_incentives',$monthwise_incentives);
     }
@@ -710,6 +710,26 @@ class UserController extends Controller
 
       return view('admin.edit_user',['user'=>$user,'users_two'=>$users_two]);
 
+
+    }
+
+    public function show_user_tree($id)
+    {
+     $user_trees=
+     DB::table('users')->where([['sponser_id', '=', $id],])->get();
+
+    
+     return view('admin.user_tree')->with('user_trees',$user_trees);
+
+    }
+
+        public function show_user_tree_client($id)
+    {
+     $user_trees=
+     DB::table('users')->where([['sponser_id', '=', $id],['is_client', '=', 2],])->get();
+
+    
+     return view('admin.user_tree')->with('user_trees',$user_trees);
 
     }
  
